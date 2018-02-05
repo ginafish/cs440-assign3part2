@@ -105,13 +105,13 @@ Dept parseDept(std::string deptLine) {
     tempDeptObj.dname = tempParse;
 
     //get budget
-    getline(tempStrStrm, tempParse, '\n');
+    getline(tempStrStrm, tempParse, ',');
     tempParse = trimQuotation(tempParse);
     std::cout << "\nParsed budget: " << tempParse;
     tempDeptObj.budget = std::stof(tempParse);
 
     //get managerid
-    getline(tempStrStrm, tempParse, ',');
+    getline(tempStrStrm, tempParse, '\n');
     tempParse = trimQuotation(tempParse);
     std::cout << "\nParsed managerid: " << tempParse;
     tempDeptObj.managerid = std::stoi(tempParse);
