@@ -23,6 +23,15 @@ std::string trimQuotation(std::string str) {
     return str.substr(1, str.size() - 2);
 }
 
+bool checkLineForLineEnd(std::string str) {
+    for(int i = 0; i < str.len(); ++i) {
+        if (str[i] == '\n') {
+            return true;
+        }
+    }
+    return false;
+}
+
 
 Emp parseEmp(std::string empLine) {
     Emp tempEmpObj;
@@ -67,7 +76,7 @@ std::vector <Emp> generateEmpList() {
     }
     std::string curLine;
     while(getline(empFile, curLine)) {
-        if(curLine == '\n') {
+        if(checkLineForLineEnd(curLine)) {
             std::cout << "\n\tEnd of Emp file.\n";
             break;
         }
@@ -122,7 +131,7 @@ std::vector <Dept> generateDeptList() {
     }
     std::string curLine;
     while(getline(deptFile, curLine)) {
-        if(curLine == '\n') {
+        if(checkLineForLineEnd(curLine)) {
             std::cout << "\n\tEnd of Dept file.\n";
             break;
         }
