@@ -79,7 +79,7 @@ std::vector <Emp> generateEmpList() {
             std::cout << "\n\tEnd of Emp file.\n";
             break;
         }
-        std::cout << "\n[line]" << curLine << "\n";
+        std::cout << "\n\n[line]" << curLine;
         empList.push_back(parseEmp(curLine));
     }
     empFile.close();
@@ -133,7 +133,7 @@ std::vector <Dept> generateDeptList() {
             std::cout << "\n\tEnd of Dept file.\n";
             break;
         }
-        std::cout << "\n[line]" << curLine << "\n";
+        std::cout << "\n\n[line]" << curLine;
         deptList.push_back(parseDept(curLine));
     }
     deptFile.close();
