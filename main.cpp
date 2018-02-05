@@ -24,7 +24,7 @@ std::string trimQuotation(std::string str) {
 }
 
 bool checkLineForLineEnd(std::string str) {
-    for(int i = 0; i < str.len(); ++i) {
+    for(int i = 0; i < str.length(); ++i) {
         if (str[i] == '\n') {
             return true;
         }
@@ -66,7 +66,7 @@ Emp parseEmp(std::string empLine) {
 }
 
 std::vector <Emp> generateEmpList() {
-    std::cout << "\nGenerating Emp list.\n"
+    std::cout << "\nGenerating Emp list.\n";
     std::vector<Emp> empList;
     ofstream empFile;
     empFile.open("Emp.csv");
@@ -121,7 +121,7 @@ Dept parseDept(std::string deptLine) {
 }
 
 std::vector <Dept> generateDeptList() {
-    std::cout << "\nGenerating Dept list.\n"
+    std::cout << "\nGenerating Dept list.\n";
     std::vector<Dept> deptList;
     ofstream deptFile;
     deptFile.open("Emp.csv");
