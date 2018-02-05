@@ -1,7 +1,8 @@
-#include  <vector>
-#include  <iostream>
-#include  <fstream>
-#include  <sstream>
+#include <vector>
+#include <iostream>
+#include <ofstream>
+#include <ifstream>
+#include <sstream>
 
 struct Record {
     const static int size = 56;
