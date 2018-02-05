@@ -95,32 +95,32 @@ Dept parseDept(std::string deptLine) {
     //get did
     getline(tempStrStrm, tempParse, ',');
     tempParse = trimQuotation(tempParse);
-    std::cout << "\nParsed did: " << tempParse;
+    //std::cout << "\nParsed did: " << tempParse;
     tempDeptObj.did = std::stoi(tempParse);
 
     //get dname
     getline(tempStrStrm, tempParse, ',');
     tempParse = trimQuotation(tempParse);
-    std::cout << "\nParsed dname: " << tempParse;
+    //std::cout << "\nParsed dname: " << tempParse;
     tempDeptObj.dname = tempParse;
 
     //get budget
     getline(tempStrStrm, tempParse, ',');
     tempParse = trimQuotation(tempParse);
-    std::cout << "\nParsed budget: " << tempParse;
+    //std::cout << "\nParsed budget: " << tempParse;
     tempDeptObj.budget = std::stof(tempParse);
 
     //get managerid
     getline(tempStrStrm, tempParse, '\n');
     tempParse = trimQuotation(tempParse);
-    std::cout << "\nParsed managerid: " << tempParse;
+    //std::cout << "\nParsed managerid: " << tempParse;
     tempDeptObj.managerid = std::stoi(tempParse);
 
     return tempDeptObj;
 }
 
 std::vector <Dept> generateDeptList() {
-    std::cout << "\nGenerating Dept list.\n";
+    //std::cout << "\nGenerating Dept list.\n";
     std::vector<Dept> deptList;
     std::ifstream deptFile("Dept.csv");
     if(!deptFile.is_open()) {
@@ -133,7 +133,7 @@ std::vector <Dept> generateDeptList() {
             std::cout << "\n\tEnd of Dept file.\n";
             break;
         }
-        std::cout << "\n\n[line]" << curLine;
+        //std::cout << "\n\n[line]" << curLine;
         deptList.push_back(parseDept(curLine));
     }
     deptFile.close();
