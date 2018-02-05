@@ -4,20 +4,20 @@
 #include  <sstream>
 
 struct Record {
-    static int size = 56;
-}
+    const static int size = 56;
+};
 
 struct Emp : Record {
     int eid, age;
     std::string ename;
     double salary;
-}
+};
 
 struct Dept : Record {
     int did, managerid;
     std::string dname;
     double budget;
-}
+};
 
 std::string trimQuotation(std::string str) {
     return str.substr(1, str.size() - 2);
