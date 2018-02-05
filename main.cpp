@@ -19,33 +19,10 @@ struct Dept : Record {
     double budget;
 }
 
-int main() {
-    std::vector<Emp> empList = generateEmpList();
-    //std::vector<Dept> deptList = generateDeptList();
-    std::vector<Record> memory;
+std::string trimQuotation(std::string str) {
+    return str.substr(1, str.size() - 2);
 }
 
-std::vector <Emp> generateEmpList() {
-    std::cout << "\nGenerating Emp list.\n"
-    std::vector<Emp> empList;
-    ofstream empFile;
-    empFile.open("Emp.csv");
-    if(!empFile.is_open()) {
-        std::cout << "Was expecting a 'Emp.csv' file.";
-        throw;
-    }
-    std::string curLine;
-    while(getline(empFile, curLine)) {
-        if(curLine == '\n') {
-            std::cout << "\n\tEnd of Emp file.\n";
-            break;
-        }
-        std::cout << "[line] " << curLine << "\n";
-        empList.push_back(parseEmp(curLine));
-    }
-    empFile.close();
-    return empList;
-}
 
 Emp parseEmp(std::string empLine) {
     Emp tempEmpObj;
@@ -79,28 +56,28 @@ Emp parseEmp(std::string empLine) {
     return tempEmpObj;
 }
 
-
-std::vector <Dept> generateDeptList() {
-    std::cout << "\nGenerating Dept list.\n"
-    std::vector<Dept> deptList;
-    ofstream deptFile;
-    deptFile.open("Emp.csv");
-    if(!deptFile.is_open()) {
-        std::cout << "Was expecting a 'Dept.csv' file.";
+std::vector <Emp> generateEmpList() {
+    std::cout << "\nGenerating Emp list.\n"
+    std::vector<Emp> empList;
+    ofstream empFile;
+    empFile.open("Emp.csv");
+    if(!empFile.is_open()) {
+        std::cout << "Was expecting a 'Emp.csv' file.";
         throw;
     }
     std::string curLine;
-    while(getline(deptFile, curLine)) {
+    while(getline(empFile, curLine)) {
         if(curLine == '\n') {
-            std::cout << "\n\tEnd of Dept file.\n";
+            std::cout << "\n\tEnd of Emp file.\n";
             break;
         }
         std::cout << "[line] " << curLine << "\n";
-        deptList.push_back(parseEmp(curLine));
+        empList.push_back(parseEmp(curLine));
     }
-    deptFile.close();
-    return deptList;
+    empFile.close();
+    return empList;
 }
+
 
 Dept parseDept(std::string deptLine) {
     Dept tempDeptObj;
@@ -134,9 +111,31 @@ Dept parseDept(std::string deptLine) {
     return tempDeptObj;
 }
 
-
-std::string trimQuotation(std::string str) {
-    return str.substr(1, str.size() - 2);
+std::vector <Dept> generateDeptList() {
+    std::cout << "\nGenerating Dept list.\n"
+    std::vector<Dept> deptList;
+    ofstream deptFile;
+    deptFile.open("Emp.csv");
+    if(!deptFile.is_open()) {
+        std::cout << "Was expecting a 'Dept.csv' file.";
+        throw;
+    }
+    std::string curLine;
+    while(getline(deptFile, curLine)) {
+        if(curLine == '\n') {
+            std::cout << "\n\tEnd of Dept file.\n";
+            break;
+        }
+        std::cout << "[line] " << curLine << "\n";
+        deptList.push_back(parseDept(curLine));
+    }
+    deptFile.close();
+    return deptList;
 }
 
 
+int main() {
+    std::vector<Emp> empList = generateEmpList();
+    //std::vector<Dept> deptList = generateDeptList();
+    std::vector<Record> memory;
+}
