@@ -1,7 +1,6 @@
 #include <vector>
 #include <iostream>
-#include <ofstream>
-#include <ifstream>
+#include <iostream>
 #include <sstream>
 
 struct Record {
