@@ -41,25 +41,25 @@ Emp parseEmp(std::string empLine) {
     //get eid
     getline(tempStrStrm, tempParse, ',');
     tempParse = trimQuotation(tempParse);
-    std::cout << "Parsed eid: " << tempParse;
+    std::cout << "\nParsed eid: " << tempParse;
     tempEmpObj.eid = std::stoi(tempParse);
 
     //get ename
     getline(tempStrStrm, tempParse, ',');
     tempParse = trimQuotation(tempParse);
-    std::cout << "Parsed ename: " << tempParse;
+    std::cout << "\nParsed ename: " << tempParse;
     tempEmpObj.ename = tempParse;
 
     //get age
     getline(tempStrStrm, tempParse, ',');
     tempParse = trimQuotation(tempParse);
-    std::cout << "Parsed age: " << tempParse;
+    std::cout << "\nParsed age: " << tempParse;
     tempEmpObj.age = std::stoi(tempParse);
 
     //get salary
     getline(tempStrStrm, tempParse, '\n');
     tempParse = trimQuotation(tempParse);
-    std::cout << "Parsed salary: " << tempParse;
+    std::cout << "\nParsed salary: " << tempParse;
     tempEmpObj.salary = std::stof(tempParse);
 
     return tempEmpObj;
@@ -70,7 +70,7 @@ std::vector <Emp> generateEmpList() {
     std::vector<Emp> empList;
     std::ifstream empFile("Emp.csv");
     if(!empFile.is_open()) {
-        std::cout << "Was expecting a 'Emp.csv' file.";
+        std::cout << "\nERROR: Was expecting a 'Emp.csv' file.\n";
         throw;
     }
     std::string curLine;
@@ -95,25 +95,25 @@ Dept parseDept(std::string deptLine) {
     //get did
     getline(tempStrStrm, tempParse, ',');
     tempParse = trimQuotation(tempParse);
-    std::cout << "Parsed did: " << tempParse;
+    std::cout << "\nParsed did: " << tempParse;
     tempDeptObj.did = std::stoi(tempParse);
 
     //get dname
     getline(tempStrStrm, tempParse, ',');
     tempParse = trimQuotation(tempParse);
-    std::cout << "Parsed dname: " << tempParse;
+    std::cout << "\nParsed dname: " << tempParse;
     tempDeptObj.dname = tempParse;
 
     //get budget
     getline(tempStrStrm, tempParse, '\n');
     tempParse = trimQuotation(tempParse);
-    std::cout << "Parsed budget: " << tempParse;
+    std::cout << "\nParsed budget: " << tempParse;
     tempDeptObj.budget = std::stof(tempParse);
 
     //get managerid
     getline(tempStrStrm, tempParse, ',');
     tempParse = trimQuotation(tempParse);
-    std::cout << "Parsed managerid: " << tempParse;
+    std::cout << "\nParsed managerid: " << tempParse;
     tempDeptObj.managerid = std::stoi(tempParse);
 
     return tempDeptObj;
@@ -124,7 +124,7 @@ std::vector <Dept> generateDeptList() {
     std::vector<Dept> deptList;
     std::ifstream deptFile("Dept.csv");
     if(!deptFile.is_open()) {
-        std::cout << "Was expecting a 'Dept.csv' file.";
+        std::cout << "\nERROR: Was expecting a 'Dept.csv' file\n.";
         throw;
     }
     std::string curLine;
