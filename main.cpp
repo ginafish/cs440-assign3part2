@@ -41,32 +41,32 @@ Emp parseEmp(std::string empLine) {
     //get eid
     getline(tempStrStrm, tempParse, ',');
     tempParse = trimQuotation(tempParse);
-    std::cout << "\nParsed eid: " << tempParse;
+    //std::cout << "\nParsed eid: " << tempParse;
     tempEmpObj.eid = std::stoi(tempParse);
 
     //get ename
     getline(tempStrStrm, tempParse, ',');
     tempParse = trimQuotation(tempParse);
-    std::cout << "\nParsed ename: " << tempParse;
+    //std::cout << "\nParsed ename: " << tempParse;
     tempEmpObj.ename = tempParse;
 
     //get age
     getline(tempStrStrm, tempParse, ',');
     tempParse = trimQuotation(tempParse);
-    std::cout << "\nParsed age: " << tempParse;
+    //std::cout << "\nParsed age: " << tempParse;
     tempEmpObj.age = std::stoi(tempParse);
 
     //get salary
     getline(tempStrStrm, tempParse, '\n');
     tempParse = trimQuotation(tempParse);
-    std::cout << "\nParsed salary: " << tempParse;
+    //std::cout << "\nParsed salary: " << tempParse;
     tempEmpObj.salary = std::stof(tempParse);
 
     return tempEmpObj;
 }
 
 std::vector <Emp> generateEmpList() {
-    std::cout << "\nGenerating Emp list.\n";
+    //std::cout << "\nGenerating Emp list.\n";
     std::vector<Emp> empList;
     std::ifstream empFile("Emp.csv");
     if(!empFile.is_open()) {
@@ -79,7 +79,7 @@ std::vector <Emp> generateEmpList() {
             std::cout << "\n\tEnd of Emp file.\n";
             break;
         }
-        std::cout << "\n\n[line]" << curLine;
+        //std::cout << "\n\n[line]" << curLine;
         empList.push_back(parseEmp(curLine));
     }
     empFile.close();
@@ -143,6 +143,6 @@ std::vector <Dept> generateDeptList() {
 
 int main() {
     std::vector<Emp> empList = generateEmpList();
-    //std::vector<Dept> deptList = generateDeptList();
+    std::vector<Dept> deptList = generateDeptList();
     std::vector<Record> memory;
 }
