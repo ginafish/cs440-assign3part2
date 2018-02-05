@@ -1,7 +1,7 @@
-#import  <vector>
-#import  <iostream>
-#import  <fstream>
-#import  <sstream>
+#include  <vector>
+#include  <iostream>
+#include  <fstream>
+#include  <sstream>
 
 struct Record {
     static int size = 56;
@@ -20,14 +20,14 @@ struct Dept : Record {
 }
 
 int main() {
-    std::vector <Emp> empList = generateEmpList();
-    //std::vector <Dept> deptList = generateDeptList();
-    std::vector <Record> memory;
+    std::vector<Emp> empList = generateEmpList();
+    //std::vector<Dept> deptList = generateDeptList();
+    std::vector<Record> memory;
 }
 
 std::vector <Emp> generateEmpList() {
     std::cout << "\nGenerating Emp list.\n"
-    std::vector <Emp> empList;
+    std::vector<Emp> empList;
     ofstream empFile;
     empFile.open("Emp.csv");
     if(!empFile.is_open()) {
@@ -50,7 +50,7 @@ std::vector <Emp> generateEmpList() {
 Emp parseEmp(std::string empLine) {
     Emp tempEmpObj;
     std::string tempParse = "";
-    stringstream tempStrStrm(empLine);
+    std::stringstream tempStrStrm(empLine);
     
     //get eid
     getline(tempStrStrm, tempParse, ',');
@@ -82,7 +82,7 @@ Emp parseEmp(std::string empLine) {
 
 std::vector <Dept> generateDeptList() {
     std::cout << "\nGenerating Dept list.\n"
-    std::vector <Dept> deptList;
+    std::vector<Dept> deptList;
     ofstream deptFile;
     deptFile.open("Emp.csv");
     if(!deptFile.is_open()) {
@@ -105,7 +105,7 @@ std::vector <Dept> generateDeptList() {
 Dept parseDept(std::string deptLine) {
     Dept tempDeptObj;
     std::string tempParse = "";
-    stringstream tempStrStrm(deptLine);
+    std::stringstream tempStrStrm(deptLine);
     
     //get did
     getline(tempStrStrm, tempParse, ',');
