@@ -111,7 +111,7 @@ Dept parseDept(std::string deptLine) {
     getline(tempStrStrm, tempParse, ',');
     tempParse = trimQuotation(tempParse);
     std::cout << "Parsed did: " << tempParse;
-    tempDeptObj.did = stoi(tempParse);
+    tempDeptObj.did = std::stoi(tempParse);
 
     //get dname
     getline(tempStrStrm, tempParse, ',');
@@ -123,13 +123,13 @@ Dept parseDept(std::string deptLine) {
     getline(tempStrStrm, tempParse, '\n');
     tempParse = trimQuotation(tempParse);
     std::cout << "Parsed budget: " << tempParse;
-    tempDeptObj.budget = stof(tempParse);
+    tempDeptObj.budget = std::stof(tempParse);
 
     //get managerid
     getline(tempStrStrm, tempParse, ',');
     tempParse = trimQuotation(tempParse);
     std::cout << "Parsed managerid: " << tempParse;
-    tempDeptObj.managerid = stoi(tempParse);
+    tempDeptObj.managerid = std::stoi(tempParse);
 
     return tempDeptObj;
 }
