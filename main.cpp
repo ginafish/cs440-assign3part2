@@ -1,6 +1,6 @@
 #include <vector>
 #include <iostream>
-#include <iostream>
+#include <fstream>
 #include <sstream>
 
 struct Record {
@@ -68,8 +68,7 @@ Emp parseEmp(std::string empLine) {
 std::vector <Emp> generateEmpList() {
     std::cout << "\nGenerating Emp list.\n";
     std::vector<Emp> empList;
-    ofstream empFile;
-    empFile.open("Emp.csv");
+    ifstream empFile("Emp.csv");
     if(!empFile.is_open()) {
         std::cout << "Was expecting a 'Emp.csv' file.";
         throw;
@@ -123,8 +122,7 @@ Dept parseDept(std::string deptLine) {
 std::vector <Dept> generateDeptList() {
     std::cout << "\nGenerating Dept list.\n";
     std::vector<Dept> deptList;
-    ofstream deptFile;
-    deptFile.open("Emp.csv");
+    ifstream deptFile("Dept.csv");
     if(!deptFile.is_open()) {
         std::cout << "Was expecting a 'Dept.csv' file.";
         throw;
