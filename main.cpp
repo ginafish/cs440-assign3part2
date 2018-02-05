@@ -1,7 +1,7 @@
-#import <vector>
-#import <iostream>
-#import <fstream>
-#include <sstream>
+#import  <vector>
+#import  <iostream>
+#import  <fstream>
+#import  <sstream>
 
 struct Record {
     static int size = 56;
@@ -37,7 +37,7 @@ std::vector <Emp> generateEmpList() {
     std::string curLine;
     while(getline(empFile, curLine)) {
         if(curLine == '\n') {
-            cout << "\n\tEnd of Emp file.\n";
+            std::cout << "\n\tEnd of Emp file.\n";
             break;
         }
         std::cout << "[line] " << curLine << "\n";
@@ -92,7 +92,7 @@ std::vector <Dept> generateDeptList() {
     std::string curLine;
     while(getline(deptFile, curLine)) {
         if(curLine == '\n') {
-            cout << "\n\tEnd of Dept file.\n";
+            std::cout << "\n\tEnd of Dept file.\n";
             break;
         }
         std::cout << "[line] " << curLine << "\n";
@@ -111,7 +111,7 @@ Dept parseDept(std::string deptLine) {
     getline(tempStrStrm, tempParse, ',');
     tempParse = trimQuotation(tempParse);
     std::cout << "Parsed did: " << tempParse;
-    tempDeptObj.did = std::stoi(tempParse);
+    tempDeptObj.did = stoi(tempParse);
 
     //get dname
     getline(tempStrStrm, tempParse, ',');
@@ -123,13 +123,13 @@ Dept parseDept(std::string deptLine) {
     getline(tempStrStrm, tempParse, '\n');
     tempParse = trimQuotation(tempParse);
     std::cout << "Parsed budget: " << tempParse;
-    tempDeptObj.budget = std::stof(tempParse);
+    tempDeptObj.budget = stof(tempParse);
 
     //get managerid
     getline(tempStrStrm, tempParse, ',');
     tempParse = trimQuotation(tempParse);
     std::cout << "Parsed managerid: " << tempParse;
-    tempDeptObj.managerid = std::stoi(tempParse);
+    tempDeptObj.managerid = stoi(tempParse);
 
     return tempDeptObj;
 }
