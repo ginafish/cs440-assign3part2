@@ -2,22 +2,40 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <algorithm>
 
 struct Record {
     const static int size = 56;
+    char type;
+
+    Record(char t) {
+        type = t;
+    }
 };
 
-struct Emp : Record {
+struct Emp : Record('E') {
     int eid, age;
     std::string ename;
     double salary;
+
+    bool operator < (const Emp& othEmp) const {
+        return (eid < othEmp.eid);
+    }
 };
 
-struct Dept : Record {
+struct Dept : Record('D') {
     int did, managerid;
     std::string dname;
     double budget;
+
+    bool operator < (const Dept& othDept) const {
+        return (managerid < othDept.managerid);
+    }
 };
+
+
+
+// ------------ Parsing Files ------------
 
 std::string trimQuotation(std::string str) {
     return str.substr(1, str.size() - 2);
@@ -141,8 +159,41 @@ std::vector <Dept> generateDeptList() {
 }
 
 
+// ------------ Sorting ------------
+
+std::vector<Emp> sortEmpList(std::vector<Emp> empList) {
+    std::sort(empList.begin(), empList.end());
+    return empList;
+}
+
+std::vector<Dept> sortDeptList(std::vector<Dept> deptList) {
+    std::sort(deptList.begin(), deptList.end());
+    return deptList;
+}
+
+
+// ------------ Merging ------------
+
+void writeResult(Emp e, Dept d, std::fstream joinFile) {
+    joinFile << "\"" << d.did << "\"," << "\"" << d.dname << "\"," 
+            << "\"" << d.budget << "\"," << "\"" << d.managerid << "\"," 
+            << "\"" << e.ename << "\"," << "\"" << e.age << "\","<< "\"" 
+            << e.salary << "\"\n";
+}
+
+void merge(std::vector<Emp> empList, std::vector<Dept> deptList) {
+    std::vector<Record> memory;
+    int iterEmpList = 0;
+    int iterDeptList = 0;
+    
+}
+
+
 int main() {
+    std::fstream joinFile("join.csv", ios::out | ios::trunc | ios::app);
     std::vector<Emp> empList = generateEmpList();
     std::vector<Dept> deptList = generateDeptList();
-    std::vector<Record> memory;
+    
+    empList = sortEmpList(empList);
+    deptList = sortDeptList(deptList);
 }
