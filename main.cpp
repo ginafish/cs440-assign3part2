@@ -170,7 +170,7 @@ std::vector<Emp> readLinesFromEmpFile(std::fstream& empFile, int count) {
             std::cout << "Emp file getline failed." << std::endl;
             break;
         }
-
+        std::cout << "didn't break" << std::endl;
         empList.push_back(parseEmp(curLine));
     }
     return empList;
