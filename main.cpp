@@ -303,9 +303,9 @@ std::vector<Dept> generateSortedDeptList(std::fstream& sourceDeptFile, std::fstr
         while(!sourceDeptFile.eof()) {
             tempList = readLinesFromEmpFile(sourceDeptFile, 21);
             tempList = sortEmpList(tempList);
-            if(tempList[0].eid < tempLowest.eid) {
+            if(tempList[0].managerid < tempLowest.managerid) {
                 tempLowest = tempList[0];
-                tempLowestNotParsed = rebuildSingleEmpToString(tempLowest);
+                tempLowestNotParsed = rebuildSingleDeptToString(tempLowest);
             }
         }
 
