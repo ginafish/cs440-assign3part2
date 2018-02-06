@@ -164,9 +164,11 @@ std::vector<Emp> readLinesFromEmpFile(std::fstream& empFile, int count) {
         std::string curLine;
         
         getline(empFile, curLine);
-        std::cout << curLine << std::endl;
+        //std::cout << curLine << std::endl;
         if(!empFile.eof()) {
-            empList.push_back(parseEmp(curLine));
+            Emp testEmp = parseEmp(curLine);
+            std::cout << testEmp.ename << std::endl;
+            empList.push_back(testEmp);
         }
     }
     return empList;
