@@ -307,7 +307,7 @@ void merge(std::fstream sortedEmpFile, std::fstream sortedDeptFile, std::fstream
     std::vector<Dept> deptRecordsInMM;
 
     empRecordsInMM = readLinesFromEmpFile(sortedEmpFile, 11);
-    deptRecordsInMM = readLinesFromDeptFile(sorteDeptFile, 11);
+    deptRecordsInMM = readLinesFromDeptFile(sortedDeptFile, 11);
 
     while(empRecordsInMM.size() > 0 && deptRecordsInMM.size() > 0) {
         if(empRecordsInMM[0].eid < deptRecordsInMM[0].managerid) {
@@ -332,12 +332,7 @@ void merge(std::fstream sortedEmpFile, std::fstream sortedDeptFile, std::fstream
 
 
 int main() {
-    try {
-        std::fstream joinFile("join.csv", std::ios::out | std::ios::trunc);
-    } catch {
-        std::cout << "Problem creating join.csv.\n";
-    }
-    
+    std::fstream joinFile("join.csv", std::ios::out | std::ios::trunc);
     std::fstream empFile("Emp.csv", std::ios::in);
     std::fstream deptFile("Dept.csv", std::ios::in);
 
