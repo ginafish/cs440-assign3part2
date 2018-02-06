@@ -370,9 +370,12 @@ int main() {
     std::fstream empFileCopy("Emp-copy.csv", std::ios::out | std::ios::in);
     std::fstream deptFileCopy("Dept-copy.csv", std::ios::out | std::ios::in);
 
+    std::cout << "creating copy files." << std::endl;
     while(!empFile.eof()) {
+        std::cout << "copying emp file" << std::endl;
         std::string temp;
         getline(empFile, temp);
+        std::cout << temp << std::endl;
         empFileCopy << temp;
     }
     while(!deptFile.eof()) {
