@@ -166,7 +166,7 @@ std::vector<Emp> readLinesFromEmpFile(std::fstream& empFile, int count) {
         try {
             getline(empFile, curLine);
         } 
-        catch (exception& e) {
+        catch (std::exception& e) {
             std::cout << e.what() << std::endl;
         }
 
