@@ -151,7 +151,7 @@ std::vector<Dept> generateDeptList() {
 
 
 
-std::vector<Emp> readLinesFromEmpFile(std::fstream empFile, int count) {
+std::vector<Emp> readLinesFromEmpFile(std::fstream& empFile, int count) {
     std::vector<Emp> empList;
     for(int i = 0; i < count; ++i) {
         if(empFile.eof()) {
@@ -166,7 +166,7 @@ std::vector<Emp> readLinesFromEmpFile(std::fstream empFile, int count) {
     return empList;
 }
 
-std::vector<Dept> readLinesFromDeptFile(std::fstream deptFile, int count) {
+std::vector<Dept> readLinesFromDeptFile(std::fstream& deptFile, int count) {
     std::vector<Dept> deptList;
     for(int i = 0; i < count; ++i) {
         if(deptFile.eof()) {
@@ -222,7 +222,7 @@ std::vector<Dept> sortDeptList(std::vector<Dept> recordList) {
     return recordList;
 }
 
-std::vector<Emp> generateSortedEmpList(std::fstream sourceEmpFile, std::fstream targetEmpFile) {
+std::vector<Emp> generateSortedEmpList(std::fstream& sourceEmpFile, std::fstream& targetEmpFile) {
     sourceEmpFile.clear();
     targetEmpFile.clear();
     sourceEmpFile.seekg(0, std::ios::beg);
@@ -264,7 +264,7 @@ std::vector<Emp> generateSortedEmpList(std::fstream sourceEmpFile, std::fstream 
     }
 }
 
-std::vector<Dept> generateSortedDeptList(std::fstream sourceDeptFile, std::fstream targetDeptFile) {
+std::vector<Dept> generateSortedDeptList(std::fstream& sourceDeptFile, std::fstream& targetDeptFile) {
     sourceDeptFile.clear();
     targetDeptFile.clear();
     sourceDeptFile.seekg(0, std::ios::beg);
@@ -308,14 +308,14 @@ std::vector<Dept> generateSortedDeptList(std::fstream sourceDeptFile, std::fstre
 
 // ------------ Merging ------------
 
-void writeResult(Emp e, Dept d, std::fstream joinFile) {
+void writeResult(Emp e, Dept d, std::fstream& joinFile) {
     joinFile << "\"" << d.did << "\"," << "\"" << d.dname << "\"," 
             << "\"" << d.budget << "\"," << "\"" << d.managerid << "\"," 
             << "\"" << e.ename << "\"," << "\"" << e.age << "\","<< "\"" 
             << e.salary << "\"\n";
 }
 
-void merge(std::fstream sortedEmpFile, std::fstream sortedDeptFile, std::fstream joinFile) {
+void merge(std::fstream& sortedEmpFile, std::fstream& sortedDeptFile, std::fstream& joinFile) {
     std::vector<Emp> empRecordsInMM;
     std::vector<Dept> deptRecordsInMM;
 
