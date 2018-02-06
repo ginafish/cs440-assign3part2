@@ -367,7 +367,6 @@ int main() {
 
     std::cout << "creating copy files." << std::endl;
     while(!empFile.eof()) {
-        std::cout << "copying emp file" << std::endl;
         std::string temp;
         getline(empFile, temp);
         empFileCopy << temp << std::endl;
@@ -375,7 +374,7 @@ int main() {
     while(!deptFile.eof()) {
         std::string temp;
         getline(deptFile, temp);
-        deptFileCopy << temp;
+        deptFileCopy << temp << std::endl;
     }
     empFile.clear();
     deptFile.clear();
