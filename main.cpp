@@ -331,7 +331,12 @@ void merge(std::fstream sortedEmpFile, std::fstream sortedDeptFile, std::fstream
 
 
 int main() {
-    std::fstream joinFile("join.csv", std::ios::out | std::ios::trunc | std::ios::app);
+    try {
+        std::fstream joinFile("join.csv", std::ios::out | std::ios::trunc);
+    } catch {
+        std::cout << "Problem creating join.csv.\n";
+    }
+    
     std::fstream empFile("Emp.csv", std::ios::in);
     std::fstream deptFile("Dept.csv", std::ios::in);
 
