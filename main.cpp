@@ -160,7 +160,7 @@ std::vector<Emp> readLinesFromEmpFile(std::fstream empFile, int count) {
         }
         std::string curLine;
         getline(empFile, curLine);
-        cout << curLine << '\n';
+        std::cout << curLine << '\n';
         empList.push_back(parseEmp(curLine));
     }
     return empList;
@@ -223,6 +223,10 @@ std::vector<Dept> sortDeptList(std::vector<Dept> recordList) {
 }
 
 std::vector<Emp> generateSortedEmpList(std::fstream sourceEmpFile, std::fstream targetEmpFile) {
+    sourceEmpFile.clear();
+    targetEmpFile.clear();
+    sourceEmpFile.seekg(0, std::ios::beg);
+    targetEmpFile.seekg(0, std::ios::beg);
     while(!sourceEmpFile.eof()) {
         std::vector<Emp> tempList;
         Emp tempLowest;
@@ -261,6 +265,10 @@ std::vector<Emp> generateSortedEmpList(std::fstream sourceEmpFile, std::fstream 
 }
 
 std::vector<Dept> generateSortedDeptList(std::fstream sourceDeptFile, std::fstream targetDeptFile) {
+    sourceDeptFile.clear();
+    targetDeptFile.clear();
+    sourceDeptFile.seekg(0, std::ios::beg);
+    targetDeptFile.seekg(0, std::ios::beg);
     while(!sourceDeptFile.eof()) {
         std::vector<Emp> tempList;
         Emp tempLowest;
