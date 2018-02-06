@@ -4,6 +4,7 @@
 #include <sstream>
 #include <algorithm>
 #include <exception>
+#include <limits>
 
 struct Emp {
     int eid, age;
@@ -167,7 +168,7 @@ std::vector<Emp> readLinesFromEmpFile(std::fstream& empFile, int count) {
         //std::cout << curLine << std::endl;
         if(!empFile.eof()) {
             Emp testEmp = parseEmp(curLine);
-            std::cout << testEmp.ename << std::endl;
+            //std::cout << testEmp.ename << std::endl;
             empList.push_back(testEmp);
         }
     }
@@ -244,6 +245,7 @@ std::vector<Emp> generateSortedEmpList(std::fstream& sourceEmpFile, std::fstream
         std::vector<Emp> tempList;
         Emp tempLowest;
         std::string tempLowestNotParsed;
+        tempLowest.eid = std::numeric_limits<int>::max();
 
         std::cout << "About to find lowest val." << std::endl;
         //find lowest value in source value
@@ -252,6 +254,7 @@ std::vector<Emp> generateSortedEmpList(std::fstream& sourceEmpFile, std::fstream
             tempList = readLinesFromEmpFile(sourceEmpFile, 21);
             std::cout << "About to sort lines." << std::endl;
             tempList = sortEmpList(tempList);
+            std::cout << 
             if(tempList[0].eid < tempLowest.eid) {
                 tempLowest = tempList[0];
                 tempLowestNotParsed = rebuildSingleEmpToString(tempLowest);
@@ -290,9 +293,11 @@ std::vector<Dept> generateSortedDeptList(std::fstream& sourceDeptFile, std::fstr
     sourceDeptFile.seekg(0, std::ios::beg);
     targetDeptFile.seekg(0, std::ios::beg);
     while(!sourceDeptFile.eof()) {
-        std::vector<Emp> tempList;
-        Emp tempLowest;
+        std::vector<Dept> tempList;
+        Dept tempLowest;
         std::string tempLowestNotParsed;
+        tempLowest.managerid = std::numeric_limits<int>::max();
+
 
         //find lowest value in source value
         while(!sourceDeptFile.eof()) {
