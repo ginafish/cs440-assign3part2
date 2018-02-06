@@ -197,7 +197,7 @@ std::vector<Dept> readLinesFromDeptFile(std::fstream& deptFile, int count) {
 std::string rebuildSingleEmpToString(Emp emp) {
     std::stringstream sstream;
     sstream << "\"" << emp.eid << "\",\"" << emp.ename << "\",\"" << emp.age << "\",\"" << emp.salary << "\"" << std::endl;
-    std::cout << "rebuilt string:" << sstream.str() << std::endl;
+    //std::cout << "rebuilt string:" << sstream.str() << std::endl;
     return sstream.str();
 }
 
@@ -279,8 +279,11 @@ std::vector<Emp> generateSortedEmpList(std::fstream& sourceEmpFile, std::fstream
             //std::cout << curLine << std::endl;
             tempFile << curLine << std::endl;
         }
+        tempFile.close();
+        sourceEmpFile.close();
         remove("Emp-copy.csv");
         rename("temp.csv", "Emp-copy.csv");
+        sourceEmpFile.open("Emp-copy.csv", std::ios::out | std::ios::in);
         sourceEmpFile.clear();
         sourceEmpFile.seekg(0, std::ios::beg);
         std::cout << "Removed and renamed lowest val from source." << std::endl;
