@@ -275,7 +275,7 @@ std::vector<Emp> generateSortedEmpList(std::fstream& sourceEmpFile, std::fstream
         sourceEmpFile.clear();
         sourceEmpFile.seekg(0, std::ios::beg);
         std::string curLine;
-        std::fstream tempFile("temp.csv", std::ios::app | std::ios::in | std::ios::out | std::ios::trunc);
+        std::fstream tempFile("temp.csv", std::ios::in | std::ios::out | std::ios::trunc);
 
         int res = access("./temp.csv", R_OK);
         if (res < 0) {
