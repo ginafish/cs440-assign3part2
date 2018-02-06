@@ -242,7 +242,7 @@ std::vector<Emp> generateSortedEmpList(std::fstream sourceEmpFile, std::fstream 
 
         //remove lowest from source file
         sourceEmpFile.clear();
-        sourceEmpFile.seekg(0, ios::beg);
+        sourceEmpFile.seekg(0, std::ios::beg);
         std::string curLine;
         std::fstream tempFile();
         while(getline(sourceEmpFile, curLine)) {
@@ -252,7 +252,7 @@ std::vector<Emp> generateSortedEmpList(std::fstream sourceEmpFile, std::fstream 
             tempFile << curLine;
         }
         sourceEmpFile.clear();
-        sourceEmpFile.seekg(0, ios::beg);
+        sourceEmpFile.seekg(0, std::ios::beg);
     }
 }
 
@@ -277,7 +277,7 @@ std::vector<Dept> generateSortedDeptList(std::fstream sourceDeptFile, std::fstre
 
         //remove lowest from source file
         sourceDeptFile.clear();
-        sourceDeptFile.seekg(0, ios::beg);
+        sourceDeptFile.seekg(0, std::ios::beg);
         std::string curLine;
         std::fstream tempFile();
         while(getline(sourceDeptFile, curLine)) {
@@ -287,7 +287,7 @@ std::vector<Dept> generateSortedDeptList(std::fstream sourceDeptFile, std::fstre
             tempFile << curLine;
         }
         sourceDeptFile.clear();
-        sourceDeptFile.seekg(0, ios::beg);
+        sourceDeptFile.seekg(0, std::ios::beg);
     }
 }
 
@@ -331,12 +331,12 @@ void merge(std::fstream sortedEmpFile, std::fstream sortedDeptFile, std::fstream
 
 
 int main() {
-    std::fstream joinFile("join.csv", ios::out | ios::trunc | ios::app);
-    std::fstream empFile("Emp.csv", ios::in);
-    std::fstream deptFile("Dept.csv", ios::in);
+    std::fstream joinFile("join.csv", std::ios::out | std::ios::trunc | std::ios::app);
+    std::fstream empFile("Emp.csv", std::ios::in);
+    std::fstream deptFile("Dept.csv", std::ios::in);
 
-    std::fstream empFileCopy("Emp-copy.csv", ios::out | ios:: in);
-    std::fstream deptFileCopy("Dept-copy.csv", ios::out | ios::in);
+    std::fstream empFileCopy("Emp-copy.csv", std::ios::out | std::ios:: in);
+    std::fstream deptFileCopy("Dept-copy.csv", std::ios::out | std::ios::in);
 
     while(!empFile.eof()) {
         std::string temp;
@@ -352,13 +352,13 @@ int main() {
     deptFile.clear();
     empFileCopy.clear();
     deptFileCopy.clear();
-    empFile.seekg(0, ios::beg);
-    deptFile.seekg(0, ios::beg);
-    empFileCopy.seekg(0, ios::beg);
-    deptFileCopy.seekg(0, ios::beg);
+    empFile.seekg(0, std::ios::beg);
+    deptFile.seekg(0, std::ios::beg);
+    empFileCopy.seekg(0, std::ios::beg);
+    deptFileCopy.seekg(0, std::ios::beg);
     
-    std::fstream sortedEmpFile("sorted-emp.csv", ios::in | ios::out);
-    std::fstream sortedDeptFile("sorted-dept.csv", ios::in | ios::out);
+    std::fstream sortedEmpFile("sorted-emp.csv", std::ios::in | std::ios::out);
+    std::fstream sortedDeptFile("sorted-dept.csv", std::ios::in | std::ios::out);
 
 
 
