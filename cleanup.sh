@@ -1,0 +1,1 @@
+rm -f Dept-copy.csv Emp-copy.csv join.csv main.out
