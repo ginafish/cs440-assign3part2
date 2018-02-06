@@ -51,25 +51,25 @@ Emp parseEmp(std::string empLine) {
     //get eid
     getline(tempStrStrm, tempParse, ',');
     tempParse = trimQuotation(tempParse);
-    std::cout << "\nParsed eid: " << tempParse;
+    //std::cout << "\nParsed eid: " << tempParse;
     tempEmpObj.eid = std::stoi(tempParse);
 
     //get ename
     getline(tempStrStrm, tempParse, ',');
     tempParse = trimQuotation(tempParse);
-    std::cout << "\nParsed ename: " << tempParse;
+    //std::cout << "\nParsed ename: " << tempParse;
     tempEmpObj.ename = tempParse;
 
     //get age
     getline(tempStrStrm, tempParse, ',');
     tempParse = trimQuotation(tempParse);
-    std::cout << "\nParsed age: " << tempParse;
+    //std::cout << "\nParsed age: " << tempParse;
     tempEmpObj.age = std::stoi(tempParse);
 
     //get salary
     getline(tempStrStrm, tempParse, '\n');
     tempParse = trimQuotation(tempParse);
-    std::cout << "\nParsed salary: " << tempParse;
+    //std::cout << "\nParsed salary: " << tempParse << std::endl;
     tempEmpObj.salary = std::stof(tempParse);
 
     return tempEmpObj;
@@ -160,15 +160,11 @@ std::vector<Emp> readLinesFromEmpFile(std::fstream& empFile, int count) {
             std::cout << "\n\tEnd of Emp file." << std::endl;
             break;
         }
-        std::cout << "Made it past the if statement." << std::endl;
+        //std::cout << "Made it past the if statement." << std::endl;
         std::string curLine;
         
-        try {
-            getline(empFile, curLine);
-            std::cout << curLine << std::endl;
-        } catch(...) {
-            std::cout << "Emp file getline failed." << std::endl;
-        }
+        getline(empFile, curLine);
+        std::cout << curLine << std::endl;
         if(!empFile.eof()) {
             empList.push_back(parseEmp(curLine));
         }
@@ -184,14 +180,11 @@ std::vector<Dept> readLinesFromDeptFile(std::fstream& deptFile, int count) {
             break;
         }
         std::string curLine;
-        try {
-            getline(deptFile, curLine);
-            std::cout << curLine << std::endl;
-        } catch(...) {
-            std::cout << "Dept file getline failed." << std::endl;
-            break;
+        getline(deptFile, curLine);
+        std::cout << curLine << std::endl;
+        if(!deptFile.eof()) {
+            deptList.push_back(parseDept(curLine));
         }
-        deptList.push_back(parseDept(curLine));
     }
     return deptList;
 }
