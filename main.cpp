@@ -50,25 +50,25 @@ Emp parseEmp(std::string empLine) {
     //get eid
     getline(tempStrStrm, tempParse, ',');
     tempParse = trimQuotation(tempParse);
-    //std::cout << "\nParsed eid: " << tempParse;
+    std::cout << "\nParsed eid: " << tempParse;
     tempEmpObj.eid = std::stoi(tempParse);
 
     //get ename
     getline(tempStrStrm, tempParse, ',');
     tempParse = trimQuotation(tempParse);
-    //std::cout << "\nParsed ename: " << tempParse;
+    std::cout << "\nParsed ename: " << tempParse;
     tempEmpObj.ename = tempParse;
 
     //get age
     getline(tempStrStrm, tempParse, ',');
     tempParse = trimQuotation(tempParse);
-    //std::cout << "\nParsed age: " << tempParse;
+    std::cout << "\nParsed age: " << tempParse;
     tempEmpObj.age = std::stoi(tempParse);
 
     //get salary
     getline(tempStrStrm, tempParse, '\n');
     tempParse = trimQuotation(tempParse);
-    //std::cout << "\nParsed salary: " << tempParse;
+    std::cout << "\nParsed salary: " << tempParse;
     tempEmpObj.salary = std::stof(tempParse);
 
     return tempEmpObj;
@@ -152,7 +152,7 @@ std::vector<Dept> generateDeptList() {
 
 
 std::vector<Emp> readLinesFromEmpFile(std::fstream empFile, int count) {
-    std::vector<Record> empList;
+    std::vector<Emp> empList;
     for(int i = 0; i < count; ++i) {
         if(empFile.eof()) {
             std::cout << "\n\tEnd of Emp file.\n";
@@ -160,6 +160,7 @@ std::vector<Emp> readLinesFromEmpFile(std::fstream empFile, int count) {
         }
         std::string curLine;
         getline(empFile, curLine);
+        cout << curLine << '\n';
         empList.push_back(parseEmp(curLine));
     }
     return empList;
