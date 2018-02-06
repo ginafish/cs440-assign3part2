@@ -194,7 +194,7 @@ std::vector<Dept> readLinesFromDeptFile(std::fstream& deptFile, int count) {
 std::string rebuildSingleEmpToString(Emp emp) {
     std::stringstream sstream;
     sstream << "\"" << emp.eid << "\",\"" << emp.ename << "\",\"" << emp.age << "\",\"" << emp.salary << "\"" << std::endl;
-    cout << "rebuilt string:" << sstream.str() << std::endl;
+    std::cout << "rebuilt string:" << sstream.str() << std::endl;
     return sstream.str();
 }
 
