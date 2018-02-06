@@ -367,8 +367,8 @@ int main() {
     std::fstream empFile("Emp.csv", std::ios::in);
     std::fstream deptFile("Dept.csv", std::ios::in);
 
-    std::fstream empFileCopy("Emp-copy.csv", std::ios::out | std::ios::in);
-    std::fstream deptFileCopy("Dept-copy.csv", std::ios::out | std::ios::in);
+    std::fstream empFileCopy("Emp-copy.csv", std::ios::out | std::ios::in | std::ios::trunc);
+    std::fstream deptFileCopy("Dept-copy.csv", std::ios::out | std::ios::in | std::ios::trunc);
 
     std::cout << "creating copy files." << std::endl;
     while(!empFile.eof()) {
