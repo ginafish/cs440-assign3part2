@@ -300,8 +300,8 @@ std::vector<Dept> generateSortedDeptList(std::fstream& sourceDeptFile, std::fstr
 
         //find lowest value in source value
         while(!sourceDeptFile.eof()) {
-            tempList = readLinesFromEmpFile(sourceDeptFile, 21);
-            tempList = sortEmpList(tempList);
+            tempList = readLinesFromDeptFile(sourceDeptFile, 21);
+            tempList = sortDeptList(tempList);
             if(tempList[0].managerid < tempLowest.managerid) {
                 tempLowest = tempList[0];
                 tempLowestNotParsed = rebuildSingleDeptToString(tempLowest);
