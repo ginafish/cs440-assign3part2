@@ -4,16 +4,7 @@
 #include <sstream>
 #include <algorithm>
 
-struct Record {
-    const static int size = 56;
-    char type;
-
-    Record(char t) {
-        type = t;
-    }
-};
-
-struct Emp : Record('E') {
+struct Emp {
     int eid, age;
     std::string ename;
     double salary;
@@ -23,7 +14,7 @@ struct Emp : Record('E') {
     }
 };
 
-struct Dept : Record('D') {
+struct Dept {
     int did, managerid;
     std::string dname;
     double budget;
