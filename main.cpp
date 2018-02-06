@@ -75,17 +75,17 @@ Emp parseEmp(std::string empLine) {
 }
 
 std::vector<Emp> generateEmpList() {
-    //std::cout << "\nGenerating Emp list.\n";
+    //std::cout << "\nGenerating Emp list." << std::endl;
     std::vector<Emp> empList;
     std::ifstream empFile("Emp.csv");
     if(!empFile.is_open()) {
-        std::cout << "\nERROR: Was expecting a 'Emp.csv' file.\n";
+        std::cout << "\nERROR: Was expecting a 'Emp.csv' file." << std::endl;
         throw;
     }
     std::string curLine;
     while(getline(empFile, curLine)) {
         if(checkLineForLineEnd(curLine)) {
-            std::cout << "\n\tEnd of Emp file.\n";
+            std::cout << "\n\tEnd of Emp file." << std::endl;
             break;
         }
         //std::cout << "\n\n[line]" << curLine;
@@ -129,7 +129,7 @@ Dept parseDept(std::string deptLine) {
 }
 
 std::vector<Dept> generateDeptList() {
-    //std::cout << "\nGenerating Dept list.\n";
+    //std::cout << "\nGenerating Dept list." << std::endl;
     std::vector<Dept> deptList;
     std::ifstream deptFile("Dept.csv");
     if(!deptFile.is_open()) {
@@ -139,7 +139,7 @@ std::vector<Dept> generateDeptList() {
     std::string curLine;
     while(getline(deptFile, curLine)) {
         if(checkLineForLineEnd(curLine)) {
-            std::cout << "\n\tEnd of Dept file.\n";
+            std::cout << "\n\tEnd of Dept file." << std::endl;
             break;
         }
         //std::cout << "\n\n[line]" << curLine;
@@ -152,10 +152,11 @@ std::vector<Dept> generateDeptList() {
 
 
 std::vector<Emp> readLinesFromEmpFile(std::fstream& empFile, int count) {
+    std::cout << "reading lines from emp file." << std::endl;
     std::vector<Emp> empList;
     for(int i = 0; i < count; ++i) {
         if(empFile.eof()) {
-            std::cout << "\n\tEnd of Emp file.\n";
+            std::cout << "\n\tEnd of Emp file." << std::endl;
             break;
         }
         std::string curLine;
@@ -170,7 +171,7 @@ std::vector<Dept> readLinesFromDeptFile(std::fstream& deptFile, int count) {
     std::vector<Dept> deptList;
     for(int i = 0; i < count; ++i) {
         if(deptFile.eof()) {
-            std::cout << "\n\tEnd of Dept file.\n";
+            std::cout << "\n\tEnd of Dept file." << std::endl;
             break;
         }
         std::string curLine;
@@ -184,28 +185,28 @@ std::vector<Dept> readLinesFromDeptFile(std::fstream& deptFile, int count) {
 
 std::string rebuildSingleEmpToString(Emp emp) {
     std::stringstream sstream;
-    sstream << "\"" << emp.eid << "\",\"" << emp.ename << "\",\"" << emp.age << "\",\"" << emp.salary << "\"\n";
+    sstream << "\"" << emp.eid << "\",\"" << emp.ename << "\",\"" << emp.age << "\",\"" << emp.salary << "\"" << std::endl;
     return sstream.str();
 }
 
 std::string rebuildEmpToString(std::vector<Emp> empList) {
     std::stringstream sstream;
     for(int i = 0; i < empList.size(); ++i) {
-        sstream << "\"" << empList[i].eid << "\",\"" << empList[i].ename << "\",\"" << empList[i].age << "\",\"" << empList[i].salary << "\"\n";
+        sstream << "\"" << empList[i].eid << "\",\"" << empList[i].ename << "\",\"" << empList[i].age << "\",\"" << empList[i].salary << "\"" << std::endl;
     }
     return sstream.str();
 }
 
 std::string rebuildSingleDeptToString(Dept dept) {
     std::stringstream sstream;
-    sstream << "\"" << dept.did << "\",\"" << dept.dname << "\",\"" << dept.budget << "\",\"" << dept.managerid << "\"\n";
+    sstream << "\"" << dept.did << "\",\"" << dept.dname << "\",\"" << dept.budget << "\",\"" << dept.managerid << "\"" << std::endl;
     return sstream.str();
 }
 
 std::string rebuildDeptToString(std::vector<Dept> deptList) {
     std::stringstream sstream;
     for(int i = 0; i < deptList.size(); ++i) {
-        sstream << "\"" << deptList[i].did << "\",\"" << deptList[i].dname << "\",\"" << deptList[i].budget << "\",\"" << deptList[i].managerid << "\"\n";
+        sstream << "\"" << deptList[i].did << "\",\"" << deptList[i].dname << "\",\"" << deptList[i].budget << "\",\"" << deptList[i].managerid << "\"" << std::endl;
     }
     return sstream.str();
 }
@@ -227,18 +228,18 @@ std::vector<Emp> generateSortedEmpList(std::fstream& sourceEmpFile, std::fstream
     targetEmpFile.clear();
     sourceEmpFile.seekg(0, std::ios::beg);
     targetEmpFile.seekg(0, std::ios::beg);
-    std::cout << "Starting to generate sorted emp list.\n";
+    std::cout << "Starting to generate sorted emp list." << std::endl;
     while(!sourceEmpFile.eof()) {
         std::vector<Emp> tempList;
         Emp tempLowest;
         std::string tempLowestNotParsed;
 
-        std::cout << "About to find lowest val.\n";
+        std::cout << "About to find lowest val." << std::endl;
         //find lowest value in source value
         while(!sourceEmpFile.eof()) {
-            std::cout << "About to read lines from file.\n";
+            std::cout << "About to read lines from file." << std::endl;
             tempList = readLinesFromEmpFile(sourceEmpFile, 21);
-            std::cout << "About to sort lines.\n";
+            std::cout << "About to sort lines." << std::endl;
             tempList = sortEmpList(tempList);
             if(tempList[0].eid < tempLowest.eid) {
                 tempLowest = tempList[0];
@@ -249,14 +250,14 @@ std::vector<Emp> generateSortedEmpList(std::fstream& sourceEmpFile, std::fstream
 
         //add lowest value to target file
         targetEmpFile << tempLowestNotParsed;
-        std::cout << "Added lowest val to target file.\n";
+        std::cout << "Added lowest val to target file." << std::endl;
 
         //remove lowest from source file
         sourceEmpFile.clear();
         sourceEmpFile.seekg(0, std::ios::beg);
         std::string curLine;
         std::fstream tempFile("temp.csv", std::ios::app | std::ios::in | std::ios::out);
-        std::cout << "Removing lowest val from source file.\n";
+        std::cout << "Removing lowest val from source file." << std::endl;
         while(getline(sourceEmpFile, curLine)) {
             if(!curLine.compare(curLine)) {
                 continue;
@@ -268,7 +269,7 @@ std::vector<Emp> generateSortedEmpList(std::fstream& sourceEmpFile, std::fstream
         rename("temp.csv", "Emp-copy.csv");
         sourceEmpFile.clear();
         sourceEmpFile.seekg(0, std::ios::beg);
-        std::cout << "Removed and renamed lowest val from source.\n";
+        std::cout << "Removed and renamed lowest val from source." << std::endl;
     }
 }
 
@@ -320,7 +321,7 @@ void writeResult(Emp e, Dept d, std::fstream& joinFile) {
     joinFile << "\"" << d.did << "\"," << "\"" << d.dname << "\"," 
             << "\"" << d.budget << "\"," << "\"" << d.managerid << "\"," 
             << "\"" << e.ename << "\"," << "\"" << e.age << "\","<< "\"" 
-            << e.salary << "\"\n";
+            << e.salary << "\"" << std::endl;
 }
 
 void merge(std::fstream& sortedEmpFile, std::fstream& sortedDeptFile, std::fstream& joinFile) {
