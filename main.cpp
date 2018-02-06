@@ -177,7 +177,7 @@ std::vector<Emp> readLinesFromEmpFile(std::fstream& empFile, int count) {
             empList.push_back(testEmp);
         }
     }
-    std::cout << "readLinesFromEmp about to return." << std::endl;
+    std::cout << "\nreadLinesFromEmp about to return: " << empList.size() << std::endl;
     return empList;
 }
 
