@@ -247,19 +247,20 @@ std::vector<Emp> generateSortedEmpList(std::fstream& sourceEmpFile, std::fstream
         std::string tempLowestNotParsed;
         tempLowest.eid = std::numeric_limits<int>::max();
 
-        std::cout << "About to find lowest val." << std::endl;
+        //std::cout << "About to find lowest val." << std::endl;
         //find lowest value in source value
         while(!sourceEmpFile.eof()) {
-            std::cout << "About to read lines from file." << std::endl;
+            //std::cout << "About to read lines from file." << std::endl;
             tempList = readLinesFromEmpFile(sourceEmpFile, 21);
-            std::cout << "About to sort lines." << std::endl;
+            //std::cout << "About to sort lines." << std::endl;
             tempList = sortEmpList(tempList);
+            std::cout << "Comparing " << tempList[0].eid << " to " << tempLowest.eid << std::endl;
             if(tempList[0].eid < tempLowest.eid) {
                 tempLowest = tempList[0];
                 tempLowestNotParsed = rebuildSingleEmpToString(tempLowest);
             }
         }
-        std::cout << "Lowest val:" << tempLowestNotParsed << std::endl;
+        std::cout << "Lowest val:" << tempLowest.eid << std::endl;
 
         //add lowest value to target file
         targetEmpFile << tempLowestNotParsed;
