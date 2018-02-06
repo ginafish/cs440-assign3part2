@@ -161,7 +161,7 @@ std::vector<Emp> readLinesFromEmpFile(std::fstream& empFile, int count) {
         }
         std::string curLine;
         getline(empFile, curLine);
-        std::cout << curLine << '\n';
+        std::cout << curLine << std::endl;
         empList.push_back(parseEmp(curLine));
     }
     return empList;
@@ -246,7 +246,7 @@ std::vector<Emp> generateSortedEmpList(std::fstream& sourceEmpFile, std::fstream
                 tempLowestNotParsed = rebuildSingleEmpToString(tempLowest);
             }
         }
-        std::cout << "Lowest val:" << tempLowestNotParsed << '\n';
+        std::cout << "Lowest val:" << tempLowestNotParsed << std::endl;
 
         //add lowest value to target file
         targetEmpFile << tempLowestNotParsed;
@@ -262,7 +262,7 @@ std::vector<Emp> generateSortedEmpList(std::fstream& sourceEmpFile, std::fstream
             if(!curLine.compare(curLine)) {
                 continue;
             }
-            std::cout << curLine << '\n';
+            std::cout << curLine << std::endl;
             tempFile << curLine;
         }
         remove("Emp-copy.csv");
