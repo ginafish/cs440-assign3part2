@@ -165,6 +165,7 @@ std::vector<Emp> readLinesFromEmpFile(std::fstream& empFile, int count) {
         std::string curLine;
         
         getline(empFile, curLine);
+        std::cout << "Made it past the getline statement.  End of file? " << !empFile.eof() << std::endl;
         //std::cout << curLine << std::endl;
         if(!empFile.eof()) {
             Emp testEmp = parseEmp(curLine);
@@ -274,7 +275,7 @@ std::vector<Emp> generateSortedEmpList(std::fstream& sourceEmpFile, std::fstream
         std::cout << "Removing lowest val from source file." << std::endl;
         while(getline(sourceEmpFile, curLine)) {
             std::cout << !curLine.compare(tempLowestNotParsed.substr(0, tempLowestNotParsed.length() - 1)) << std::endl;
-            std::cout << curLine << std::endl << tempLowestNotParsed.substr(0, tempLowestNotParsed.length() - 1) << std::endl;
+            //std::cout << curLine << std::endl << tempLowestNotParsed.substr(0, tempLowestNotParsed.length() - 1) << std::endl;
             if(!curLine.compare(tempLowestNotParsed.substr(0, tempLowestNotParsed.length() - 1))) {
                 continue;
             }
