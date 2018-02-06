@@ -165,15 +165,12 @@ std::vector<Emp> readLinesFromEmpFile(std::fstream& empFile, int count) {
         
         try {
             getline(empFile, curLine);
-        }
-        catch(...) {
+            std::cout << curLine << std::endl;
+        } catch(...) {
             std::cout << "Emp file getline failed." << std::endl;
             break;
         }
 
-        std::cout << "Made it past the getline." << std::endl;
-
-        std::cout << curLine << std::endl;
         empList.push_back(parseEmp(curLine));
     }
     return empList;
@@ -187,7 +184,13 @@ std::vector<Dept> readLinesFromDeptFile(std::fstream& deptFile, int count) {
             break;
         }
         std::string curLine;
-        getline(deptFile, curLine);
+        try {
+            getline(deptFile, curLine);
+            std::cout << curLine << std::endl;
+        } catch(...) {
+            std::cout << "Dept file getline failed." << std::endl;
+            break;
+        }
         deptList.push_back(parseDept(curLine));
     }
     return deptList;
