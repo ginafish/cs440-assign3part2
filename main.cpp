@@ -270,8 +270,8 @@ std::vector<Emp> generateSortedEmpList(std::fstream& sourceEmpFile, std::fstream
             if(!curLine.compare(curLine)) {
                 continue;
             }
-            std::cout << curLine << std::endl;
-            tempFile << curLine;
+            //std::cout << curLine << std::endl;
+            tempFile << curLine << std::endl;
         }
         remove("Emp-copy.csv");
         rename("temp.csv", "Emp-copy.csv");
