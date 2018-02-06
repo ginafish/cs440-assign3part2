@@ -6,6 +6,8 @@
 #include <exception>
 #include <limits>
 
+#include <unistd.h>
+
 struct Emp {
     int eid, age;
     std::string ename;
@@ -274,6 +276,14 @@ std::vector<Emp> generateSortedEmpList(std::fstream& sourceEmpFile, std::fstream
         sourceEmpFile.seekg(0, std::ios::beg);
         std::string curLine;
         std::fstream tempFile("temp.csv", std::ios::app | std::ios::in | std::ios::out | std::ios::trunc);
+
+        int res = access("./temp.csv", R_OK);
+        if (res < 0) {
+            if (errno == ENOENT) {
+                std::cout << "temp.csv not created." << std::endl;
+            }
+        }
+
         std::cout << "Removing lowest val from source file." << std::endl;
         while(getline(sourceEmpFile, curLine)) {
             std::cout << !curLine.compare(tempLowestNotParsed.substr(0, tempLowestNotParsed.length() - 1)) << std::endl;
