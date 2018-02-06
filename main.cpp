@@ -162,13 +162,8 @@ std::vector<Emp> readLinesFromEmpFile(std::fstream& empFile, int count) {
         }
         std::cout << "Made it past the if statement." << std::endl;
         std::string curLine;
-
-        try {
-            getline(empFile, curLine);
-        } 
-        catch (std::exception& e) {
-            std::cout << e.what() << std::endl;
-        }
+        
+        getline(empFile, curLine);
 
         std::cout << curLine << std::endl;
         empList.push_back(parseEmp(curLine));
@@ -375,8 +370,7 @@ int main() {
         std::cout << "copying emp file" << std::endl;
         std::string temp;
         getline(empFile, temp);
-        std::cout << temp << std::endl;
-        empFileCopy << temp;
+        empFileCopy << temp << std::endl;
     }
     while(!deptFile.eof()) {
         std::string temp;
