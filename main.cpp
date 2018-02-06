@@ -168,10 +168,10 @@ std::vector<Emp> readLinesFromEmpFile(std::fstream& empFile, int count) {
             std::cout << curLine << std::endl;
         } catch(...) {
             std::cout << "Emp file getline failed." << std::endl;
-            break;
         }
-        std::cout << "didn't break" << std::endl;
-        empList.push_back(parseEmp(curLine));
+        if(!empFile.eof()) {
+            empList.push_back(parseEmp(curLine));
+        }
     }
     return empList;
 }
