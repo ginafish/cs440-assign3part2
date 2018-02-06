@@ -249,6 +249,7 @@ std::vector<Emp> generateSortedEmpList(std::fstream sourceEmpFile, std::fstream 
             if(!curLine.compare(curLine)) {
                 continue;
             }
+            std::cout << curLine << '\n';
             tempFile << curLine;
         }
         sourceEmpFile.clear();
