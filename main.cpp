@@ -236,7 +236,9 @@ std::vector<Emp> generateSortedEmpList(std::fstream& sourceEmpFile, std::fstream
         std::cout << "About to find lowest val.\n";
         //find lowest value in source value
         while(!sourceEmpFile.eof()) {
+            std::cout << "About to read lines from file.\n";
             tempList = readLinesFromEmpFile(sourceEmpFile, 21);
+            std::cout << "About to sort lines.\n";
             tempList = sortEmpList(tempList);
             if(tempList[0].eid < tempLowest.eid) {
                 tempLowest = tempList[0];
