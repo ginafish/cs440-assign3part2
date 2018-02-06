@@ -227,11 +227,13 @@ std::vector<Emp> generateSortedEmpList(std::fstream& sourceEmpFile, std::fstream
     targetEmpFile.clear();
     sourceEmpFile.seekg(0, std::ios::beg);
     targetEmpFile.seekg(0, std::ios::beg);
+    std::cout << "Starting to generate sorted emp list.\n";
     while(!sourceEmpFile.eof()) {
         std::vector<Emp> tempList;
         Emp tempLowest;
         std::string tempLowestNotParsed;
 
+        std::cout << "About to find lowest val.\n";
         //find lowest value in source value
         while(!sourceEmpFile.eof()) {
             tempList = readLinesFromEmpFile(sourceEmpFile, 21);
@@ -241,15 +243,18 @@ std::vector<Emp> generateSortedEmpList(std::fstream& sourceEmpFile, std::fstream
                 tempLowestNotParsed = rebuildSingleEmpToString(tempLowest);
             }
         }
+        std::cout << "Lowest val:" << tempLowestNotParsed << '\n';
 
         //add lowest value to target file
         targetEmpFile << tempLowestNotParsed;
+        std::cout << "Added lowest val to target file.\n";
 
         //remove lowest from source file
         sourceEmpFile.clear();
         sourceEmpFile.seekg(0, std::ios::beg);
         std::string curLine;
         std::fstream tempFile("temp.csv", std::ios::app | std::ios::in | std::ios::out);
+        std::cout << "Removing lowest val from source file.\n";
         while(getline(sourceEmpFile, curLine)) {
             if(!curLine.compare(curLine)) {
                 continue;
@@ -261,6 +266,7 @@ std::vector<Emp> generateSortedEmpList(std::fstream& sourceEmpFile, std::fstream
         rename("temp.csv", "Emp-copy.csv");
         sourceEmpFile.clear();
         sourceEmpFile.seekg(0, std::ios::beg);
+        std::cout << "Removed and renamed lowest val from source.\n";
     }
 }
 
