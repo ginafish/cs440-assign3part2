@@ -273,7 +273,8 @@ std::vector<Emp> generateSortedEmpList(std::fstream& sourceEmpFile, std::fstream
         std::fstream tempFile("temp.csv", std::ios::app | std::ios::in | std::ios::out | std::ios::trunc);
         std::cout << "Removing lowest val from source file." << std::endl;
         while(getline(sourceEmpFile, curLine)) {
-            if(!curLine.compare(curLine)) {
+            std::cout << !curLine.compare(tempLowestNotParsed) << std::endl;
+            if(!curLine.compare(tempLowestNotParsed)) {
                 continue;
             }
             //std::cout << curLine << std::endl;
