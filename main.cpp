@@ -244,7 +244,7 @@ std::vector<Emp> generateSortedEmpList(std::fstream sourceEmpFile, std::fstream 
         sourceEmpFile.clear();
         sourceEmpFile.seekg(0, std::ios::beg);
         std::string curLine;
-        std::fstream tempFile("temp.csv", ios::app | ios::in | ios::out);
+        std::fstream tempFile("temp.csv", std::ios::app | std::ios::in | std::ios::out);
         while(getline(sourceEmpFile, curLine)) {
             if(!curLine.compare(curLine)) {
                 continue;
@@ -282,7 +282,7 @@ std::vector<Dept> generateSortedDeptList(std::fstream sourceDeptFile, std::fstre
         sourceDeptFile.clear();
         sourceDeptFile.seekg(0, std::ios::beg);
         std::string curLine;
-        std::fstream tempFile("temp.csv", ios::app | ios::in | ios::out);
+        std::fstream tempFile("temp.csv", std::ios::app | std::ios::in | std::ios::out);
         while(getline(sourceDeptFile, curLine)) {
             if(!curLine.compare(curLine)) {
                 continue;
@@ -340,7 +340,7 @@ int main() {
     std::fstream empFile("Emp.csv", std::ios::in);
     std::fstream deptFile("Dept.csv", std::ios::in);
 
-    std::fstream empFileCopy("Emp-copy.csv", std::ios::out | std::ios:: in);
+    std::fstream empFileCopy("Emp-copy.csv", std::ios::out | std::ios::in);
     std::fstream deptFileCopy("Dept-copy.csv", std::ios::out | std::ios::in);
 
     while(!empFile.eof()) {
