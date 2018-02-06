@@ -310,15 +310,15 @@ void merge(std::fstream sortedEmpFile, std::fstream sortedDeptFile, std::fstream
 
     while(empRecordsInMM.size() > 0 && deptRecordsInMM.size() > 0) {
         if(empRecordsInMM[0].eid < deptRecordsInMM[0].managerid) {
-            empRecordsInMM.erase(0);
+            empRecordsInMM.erase(empRecordsInMM.begin());
         } else if(deptRecordsInMM[0].managerid < empRecordsInMM[0].eid) {
-            deptRecordsInMM.erase(0);
+            deptRecordsInMM.erase(deptRecordsInMM.begin());
         } else {
-            while(deptRecordsInMM.size() > 0) {
+            while(deptRecordsInMM.size() > 0 && deptRecordsInMM[0].managerid == empRecordsInMM[0].eid) {
                 writeResult(empRecordsInMM[0], deptRecordsInMM[0], joinFile);
-                deptRecordsInMM.erase(0);
+                deptRecordsInMM.erase(deptRecordsInMM.begin());
             }
-            empRecordsInMM.erase(0);
+            empRecordsInMM.erase(empRecordsInMM.begin());
         }
 
         if(empRecordsInMM.size() == 0) {
