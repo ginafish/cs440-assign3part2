@@ -163,7 +163,13 @@ std::vector<Emp> readLinesFromEmpFile(std::fstream& empFile, int count) {
         std::cout << "Made it past the if statement." << std::endl;
         std::string curLine;
         
-        getline(empFile, curLine);
+        try {
+            getline(empFile, curLine);
+        }
+        catch(exception& e) {
+            std::cout << "Emp file getline failed." << std::endl;
+        }
+        
 
         std::cout << curLine << std::endl;
         empList.push_back(parseEmp(curLine));
