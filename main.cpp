@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include <algorithm>
+#include <exception>
 
 struct Emp {
     int eid, age;
@@ -159,8 +160,15 @@ std::vector<Emp> readLinesFromEmpFile(std::fstream& empFile, int count) {
             std::cout << "\n\tEnd of Emp file." << std::endl;
             break;
         }
+        std::cout << "Made it past the if statement." << std::endl;
         std::string curLine;
-        getline(empFile, curLine);
+
+        try {
+            getline(empFile, curLine);
+        } catch(exception& e) {
+            cout << e.what() << std::endl;
+        }
+
         std::cout << curLine << std::endl;
         empList.push_back(parseEmp(curLine));
     }
