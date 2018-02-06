@@ -374,6 +374,7 @@ int main() {
     std::fstream sortedEmpFile("sorted-emp.csv", std::ios::in | std::ios::out);
     std::fstream sortedDeptFile("sorted-dept.csv", std::ios::in | std::ios::out);
 
-
-
+    generateSortedEmpList(empFileCopy, sortedEmpFile);
+    generateSortedDeptList(deptFileCopy, sortedDeptFile);
+    merge(sortedEmpFile, sortedDeptFile, joinFile);
 }
