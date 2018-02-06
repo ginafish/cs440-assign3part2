@@ -254,7 +254,6 @@ std::vector<Emp> generateSortedEmpList(std::fstream& sourceEmpFile, std::fstream
             tempList = readLinesFromEmpFile(sourceEmpFile, 21);
             std::cout << "About to sort lines." << std::endl;
             tempList = sortEmpList(tempList);
-            std::cout << 
             if(tempList[0].eid < tempLowest.eid) {
                 tempLowest = tempList[0];
                 tempLowestNotParsed = rebuildSingleEmpToString(tempLowest);
