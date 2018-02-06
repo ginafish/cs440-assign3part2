@@ -244,7 +244,7 @@ std::vector<Emp> generateSortedEmpList(std::fstream sourceEmpFile, std::fstream 
         sourceEmpFile.clear();
         sourceEmpFile.seekg(0, std::ios::beg);
         std::string curLine;
-        std::fstream tempFile();
+        std::fstream tempFile("temp.csv", ios::app | ios::in | ios::out);
         while(getline(sourceEmpFile, curLine)) {
             if(!curLine.compare(curLine)) {
                 continue;
@@ -252,6 +252,8 @@ std::vector<Emp> generateSortedEmpList(std::fstream sourceEmpFile, std::fstream 
             std::cout << curLine << '\n';
             tempFile << curLine;
         }
+        remove("Emp-copy.csv");
+        rename("temp.csv", "Emp-copy.csv");
         sourceEmpFile.clear();
         sourceEmpFile.seekg(0, std::ios::beg);
     }
@@ -280,13 +282,15 @@ std::vector<Dept> generateSortedDeptList(std::fstream sourceDeptFile, std::fstre
         sourceDeptFile.clear();
         sourceDeptFile.seekg(0, std::ios::beg);
         std::string curLine;
-        std::fstream tempFile();
+        std::fstream tempFile("temp.csv", ios::app | ios::in | ios::out);
         while(getline(sourceDeptFile, curLine)) {
             if(!curLine.compare(curLine)) {
                 continue;
             }
             tempFile << curLine;
         }
+        remove("Dept-copy.csv");
+        rename("temp.csv", "Dept-copy.csv");
         sourceDeptFile.clear();
         sourceDeptFile.seekg(0, std::ios::beg);
     }
@@ -325,7 +329,7 @@ void merge(std::fstream sortedEmpFile, std::fstream sortedDeptFile, std::fstream
         if(empRecordsInMM.size() == 0) {
             empRecordsInMM = readLinesFromEmpFile(sortedEmpFile, 11);
         } else if (deptRecordsInMM.size() == 0) {
-            deptRecordsInMM = readLinesFromDeptFile(sorteDeptFile, 11);
+            deptRecordsInMM = readLinesFromDeptFile(sortedDeptFile, 11);
         }
     }
 }
